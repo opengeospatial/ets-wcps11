@@ -1,6 +1,6 @@
 # OGC Web Coverage Processing Service 1.1 Test-Suite
 
-The OGC Web Coverage Service 2.0.1 Test-Suite provides the Executable Test Script (ETS) to test implementations against the following specification(s):
+The OGC Web Coverage Processing Service 1.1 Test-Suite provides the Executable Test Script (ETS) to test implementations against the following specification(s):
 
   * [WCPS](https://docs.ogc.org/is/08-068r3/08-068r3.html)
 
