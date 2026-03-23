@@ -1,0 +1,8 @@
+for $c in ( AvgTemperatureColorScaled )
+	return encode(coverage newCov
+	domain crs "OGC:Index1D" with
+		x index (0:4)
+	range type
+		elem quantity int
+	range set
+		1, "application/json")

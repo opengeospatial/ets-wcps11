@@ -1,0 +1,3 @@
+for $c in ( AvgTemperatureColorScaled )
+    let $x := 2
+    return $x

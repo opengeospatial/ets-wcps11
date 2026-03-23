@@ -1,0 +1,10 @@
+for $c in ( AvgTemperatureColorScaled )
+    let $a := coverage newCov
+    domain crs "OGC:Index2D" with
+        x index (0:4),
+        y index (1:3)
+    range type
+        elem quantity int
+    range set
+        x + y
+    return encode($a, "application/json")
