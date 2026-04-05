@@ -8,16 +8,27 @@ import java.util.Map;
 
 import com.sun.jersey.api.client.Client;
 public class WCPSWrapper {
-    URI serviceEndpoint;
-    Client client;
+    
+    private URI serviceEndpoint;
+    
+    private Client client;
+    
+    private String forClause;
+
     public WCPSWrapper(URI serviceEndpoint) {
         this.serviceEndpoint = serviceEndpoint;
         client = ClientUtils.buildClient();
+        forClause = "for __cov__ in ( " + discoverCoverage() + " )\n";
     }
 
     public String sendQueryKVP(String query) {
         Map<String, String> params = new HashMap<>();
-        params.put("query", query);
+        params.put(forClause + "query", query);
         return client.handle(ClientUtils.buildGetRequest(serviceEndpoint, params)).getEntity(String.class);
+    }
+
+    private String discoverCoverage() {
+        // TODO replace with actual discovery of coverage
+        return "AvgTemperatureColorScaled";
     }
 }

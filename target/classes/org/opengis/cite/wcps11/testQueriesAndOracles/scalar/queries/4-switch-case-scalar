@@ -1,2 +1,0 @@
-for $c in ( AvgTemperatureColorScaled )
-    return (switch case 1 > 0 return 4 default return 2)

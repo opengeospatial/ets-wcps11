@@ -1,6 +1,0 @@
-1-let-clause-scalar
-2-let-clause-2-vars
-3-let-clause-3-vars
-4-switch-case-scalar
-5-switch-case-default-return
-6-switch-case-multiple-cases

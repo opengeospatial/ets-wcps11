@@ -1,13 +1,11 @@
 package org.opengis.cite.wcps11.level1;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import static org.opengis.cite.wcps11.testdata.TestData.*;
 
+import org.json.JSONException;
 import org.opengis.cite.wcps11.CommonFixture;
 import org.opengis.cite.wcps11.SuiteAttribute;
+import org.opengis.cite.wcps11.testdata.QueryAndOracle;
 import org.opengis.cite.wcps11.util.WCPSWrapper;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
@@ -15,7 +13,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 /**
  * Includes various tests of capability 1.
  */
@@ -23,14 +20,12 @@ public class Capability1Tests extends CommonFixture {
 
     private WCPSWrapper service;
 
-    private final String COV_OUTPUT_TESTS_PATH = "/org/opengis/cite/wcps11/testQueriesAndOracles/coverage/";
-    private final String SCALAR_OUTPUT_TESTS_PATH = "/org/opengis/cite/wcps11/testQueriesAndOracles/scalar/";
     // private Document testSubject;
 
     /**
      * Obtains the test subject from the ISuite context. The suite attribute
-     * {@link org.opengis.cite.wcps11.SuiteAttribute#TEST_SUBJECT} should
-     * evaluate to a DOM Document node.
+     * {@link org.opengis.cite.wcps11.SuiteAttribute#WCPS_ENDPOINT} should
+     * be a WCPSWrapper instance.
      * 
      * @param testContext
      *            The test (group) context.
@@ -44,60 +39,30 @@ public class Capability1Tests extends CommonFixture {
         }
     }
 
-    private Iterator<Object[]> queriesAndOracles(String basePath) {
-        List<Object[]> params = new ArrayList<>();
-        try {
-            InputStream manifestStream = getClass().getResourceAsStream(basePath + "manifest.txt");
-            if (manifestStream != null) {
-                try (Scanner scanner = new Scanner(manifestStream, "UTF-8")) {
-                    while (scanner.hasNextLine()) {
-                        String filename = scanner.nextLine().trim();
-                        if (!filename.isEmpty()) {
-                            InputStream queryStream = getClass().getResourceAsStream(basePath + "queries/" + filename);
-                            InputStream oracleStream = getClass().getResourceAsStream(basePath + "oracles/" + filename);
-                            if (queryStream != null && oracleStream != null) {
-                                try (Scanner qScanner = new java.util.Scanner(queryStream, "UTF-8").useDelimiter("\\A");
-                                     Scanner oScanner = new java.util.Scanner(oracleStream, "UTF-8").useDelimiter("\\A")) {
-                                    String query = qScanner.hasNext() ? qScanner.next() : "";
-                                    String oracle = oScanner.hasNext() ? oScanner.next() : "";
-                                    params.add(new Object[]{query, oracle});
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return params.iterator();
+    private void assertScalarOutput(QueryAndOracle data) {
+        String output = service.sendQueryKVP(data.query);
+        Assert.assertEquals(output.trim(), data.oracle.trim(),
+                "Unexpected output for query: " + data.query);
     }
 
-    @DataProvider(name = "coverageOutputTestsProvider")
-    private Iterator<Object[]> coverageOutputTestsProvider() {
-        return queriesAndOracles(COV_OUTPUT_TESTS_PATH);
+    private void assertCoverageOutput(QueryAndOracle data) throws JSONException{
+        String output = service.sendQueryKVP(data.query);
+        JSONAssert.assertEquals(output, data.oracle, true);
     }
 
-    @DataProvider(name = "scalarOutputTestsProvider")
-    private Iterator<Object[]> scalarOutputTestsProvider() {
-        return queriesAndOracles(SCALAR_OUTPUT_TESTS_PATH);
+    @DataProvider(name = "letExprQueries")
+    public Object[][] provideLetExprQueries() {
+        return new Object[][]{{LET_SCALAR}, {LET_MUTI}, {LET_COV}, {LET_LATER_USAGE}};
     }
 
-    @Test(dataProvider = "coverageOutputTestsProvider")
-    /**
-     * queries with json outputs
-     */
-    public void coverageOutputTests(String query, String oracle) throws Exception {
-        String serverOutput = service.sendQueryKVP(query);
-        JSONAssert.assertEquals("Server returned incorrect output for query: " + query, oracle, serverOutput, true);
+    @Test(description = "Numeric literals and return statement")
+    public void testNumericLiterals() {
+        assertScalarOutput(RETURN_NUMERIC_LITERAL);
     }
 
-    @Test(dataProvider = "scalarOutputTestsProvider")
-    /**
-     * queries with scalar outputs
-     */
-    public void scalarOutputTests(String query, String oracle) {
-        String serverOutput = service.sendQueryKVP(query);
-        Assert.assertEquals(serverOutput.trim(), oracle.trim(), "Not equal for query: " + query);
+
+    @Test(description = "Requirement 2 of xWcps ATS", dataProvider = "letExprQueries")
+    public void testLetExpr(QueryAndOracle data) throws JSONException {
+        assertCoverageOutput(data);
     }
 }
