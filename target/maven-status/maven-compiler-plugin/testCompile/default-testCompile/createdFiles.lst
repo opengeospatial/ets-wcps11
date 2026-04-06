@@ -1,7 +1,0 @@
-org/opengis/cite/wcps11/VerifyETSAssert.class
-org/opengis/cite/wcps11/VerifyTestNGController.class
-org/opengis/cite/wcps11/util/VerifyXMLUtils.class
-org/opengis/cite/wcps11/VerifySuiteFixtureListener.class
-org/opengis/cite/wcps11/util/VerifyURIUtils.class
-org/opengis/cite/wcps11/level1/VerifyCapability1Tests.class
-org/opengis/cite/wcps11/util/VerifyValidationUtils.class
