@@ -23,7 +23,7 @@ public class WCPSWrapper {
 
     public String sendQueryKVP(String query) {
         Map<String, String> params = new HashMap<>();
-        params.put(forClause + "query", query);
+        params.put("query", forClause + query);
         return client.handle(ClientUtils.buildGetRequest(serviceEndpoint, params)).getEntity(String.class);
     }
 
