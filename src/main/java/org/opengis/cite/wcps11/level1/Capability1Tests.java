@@ -41,13 +41,13 @@ public class Capability1Tests extends CommonFixture {
 
     private void assertScalarOutput(QueryAndOracle data) {
         String output = service.sendQueryKVP(data.query);
-        Assert.assertEquals(output.trim(), data.oracle.trim(),
+        Assert.assertEquals(data.oracle.trim(), output.trim(),
                 "Unexpected output for query: " + data.query);
     }
 
-    private void assertCoverageOutput(QueryAndOracle data) throws JSONException{
+    private void assertCoverageOutput(QueryAndOracle data) throws JSONException {
         String output = service.sendQueryKVP(data.query);
-        JSONAssert.assertEquals(output, data.oracle, true);
+        JSONAssert.assertEquals("Unexpected coverage output for query: " + data.query, output, data.oracle, true);
     }
 
     @DataProvider(name = "basicBinaryOps")
