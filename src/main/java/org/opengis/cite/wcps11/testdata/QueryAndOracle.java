@@ -17,4 +17,8 @@ public class QueryAndOracle {
     public QueryAndOracle(String query, String oracle) {
         this(query, oracle, null);
     }
+
+    public QueryAndOracle(String query) {
+        this(query, null, null);
+    }
 }

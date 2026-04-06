@@ -306,4 +306,12 @@ public class TestData {
                         "\"application/json\")",
         "[[105,106,107,108,9],[106,107,108,9,10],[107,108,9,10,11],[108,9,10,11,12],[9,10,11,12,13]]"
     );
+
+    public static final QueryAndOracle DUPLICATE_CONST_NAME = new QueryAndOracle(
+        "let $a := 2, $a := 4 return $a"
+    );
+
+    public static final QueryAndOracle CRS_AXES_MISMATCH = new QueryAndOracle(
+        "return encode(coverage newCov domain crs \"OGC:Index1D\" with x index (1:5), y index (4:8) range type elem quantity int range set x + y, \"application/json\")"
+    );
 }

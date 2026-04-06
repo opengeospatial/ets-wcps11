@@ -40,14 +40,19 @@ public class Capability1Tests extends CommonFixture {
     }
 
     private void assertScalarOutput(QueryAndOracle data) {
-        String output = service.sendQueryKVP(data.query);
+        String output = service.sendQueryKVP(data.query).getEntity(String.class);
         Assert.assertEquals(data.oracle.trim(), output.trim(),
                 "Unexpected output for query: " + data.query);
     }
 
     private void assertCoverageOutput(QueryAndOracle data) throws JSONException {
-        String output = service.sendQueryKVP(data.query);
+        String output = service.sendQueryKVP(data.query).getEntity(String.class);
         JSONAssert.assertEquals("Unexpected coverage output for query: " + data.query, output, data.oracle, true);
+    }
+
+    private void assertErrorResponse(QueryAndOracle data) {
+        int statusCode = service.sendQueryKVP(data.query).getStatus();
+        Assert.assertEquals(statusCode, 400, "Expected HTTP 400 Bad Request for query: " + data.query);
     }
 
     @DataProvider(name = "basicBinaryOps")
@@ -84,6 +89,11 @@ public class Capability1Tests extends CommonFixture {
         return new Object[][]{{SWITCH_COV}, {SWITCH_COV_OUTPUT}};
     }
 
+    @DataProvider(name = "errorResponses")
+    public Object[][] provideErrorResponses() {
+        return new Object[][]{{DUPLICATE_CONST_NAME}, {CRS_AXES_MISMATCH}};
+    }
+
     @Test(description = "Numeric literals and return statement")
     public void testNumericLiterals() {
         assertScalarOutput(RETURN_NUMERIC_LITERAL);
@@ -118,4 +128,10 @@ public class Capability1Tests extends CommonFixture {
     public void testSwitchExprCoverage(QueryAndOracle data) throws JSONException {
         assertCoverageOutput(data);
     }
+
+    @Test(description = "Requirement 19 of xWcps ATS: queries leading to exceptions", dataProvider = "errorResponses")
+    public void testErrorResponses(QueryAndOracle data) {
+        assertErrorResponse(data);
+    }
+
 }

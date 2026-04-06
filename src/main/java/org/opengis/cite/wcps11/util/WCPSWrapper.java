@@ -7,6 +7,7 @@ import java.util.Map;
 // import org.w3c.dom.Document;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
 public class WCPSWrapper {
     
     private URI serviceEndpoint;
@@ -21,10 +22,10 @@ public class WCPSWrapper {
         forClause = "for __cov__ in ( " + discoverCoverage() + " )\n";
     }
 
-    public String sendQueryKVP(String query) {
+    public ClientResponse sendQueryKVP(String query) {
         Map<String, String> params = new HashMap<>();
         params.put("query", forClause + query);
-        return client.handle(ClientUtils.buildGetRequest(serviceEndpoint, params)).getEntity(String.class);
+        return client.handle(ClientUtils.buildGetRequest(serviceEndpoint, params));
     }
 
     private String discoverCoverage() {
