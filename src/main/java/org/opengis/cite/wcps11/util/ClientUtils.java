@@ -107,7 +107,7 @@ public class ClientUtils {
         URI uri = uriBuilder.build();
         ClientRequest.Builder reqBuilder = ClientRequest.create();
         if (null == mediaTypes || mediaTypes.length == 0) {
-            reqBuilder = reqBuilder.accept(MediaType.APPLICATION_JSON_TYPE, MediaType.TEXT_PLAIN_TYPE);
+            reqBuilder = reqBuilder.accept(MediaType.APPLICATION_JSON_TYPE, MediaType.APPLICATION_XML_TYPE, MediaType.TEXT_PLAIN_TYPE);
         } else {
             reqBuilder = reqBuilder.accept(mediaTypes);
         }
@@ -141,7 +141,7 @@ public class ClientUtils {
                 .type(MediaType.MULTIPART_FORM_DATA_TYPE)
                 .entity(multiPart);
         if (null == mediaTypes || mediaTypes.length == 0) {
-            reqBuilder = reqBuilder.accept(MediaType.APPLICATION_JSON_TYPE);
+            reqBuilder = reqBuilder.accept(MediaType.APPLICATION_JSON_TYPE, MediaType.APPLICATION_XML_TYPE, MediaType.TEXT_PLAIN_TYPE);
         } else {
             reqBuilder = reqBuilder.accept(mediaTypes);
         }
