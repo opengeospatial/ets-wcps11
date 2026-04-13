@@ -6,7 +6,7 @@
   <id>deps</id>
   <formats>
     <format>zip</format>
-    <!-- <format>tar.gz</format> -->
+    <format>tar.gz</format>
   </formats>
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
@@ -16,7 +16,7 @@
         <include>org.opengis.cite:schema-utils</include>
       </includes>
       <outputDirectory>/</outputDirectory>
-      <unpack>true</unpack>
+      <unpack>false</unpack>
       <scope>runtime</scope>
       <useTransitiveDependencies>true</useTransitiveDependencies>
     </dependencySet>
@@ -27,7 +27,7 @@
         <exclude>org.opengis.cite:schema-utils</exclude>
       </excludes> -->
       <outputDirectory>/</outputDirectory>
-      <unpack>true</unpack>
+      <unpack>false</unpack>
       <scope>runtime</scope>
       <useTransitiveDependencies>true</useTransitiveDependencies>
       <useTransitiveFiltering>true</useTransitiveFiltering>
