@@ -1,6 +1,6 @@
 package org.opengis.cite.wcps11.testdata;
 
-public class TestData {
+public class xWcps {
 
     // --- Elementary operations test cases ---
     public static final QueryAndOracle RETURN_NUMERIC_LITERAL = new QueryAndOracle(

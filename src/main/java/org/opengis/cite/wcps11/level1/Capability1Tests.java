@@ -1,6 +1,7 @@
 package org.opengis.cite.wcps11.level1;
 
-import static org.opengis.cite.wcps11.testdata.TestData.*;
+import static org.opengis.cite.wcps11.testdata.xWcps.*;
+import static org.opengis.cite.wcps11.testdata.UnaryInduced.*;
 
 import org.json.JSONException;
 import org.opengis.cite.wcps11.CommonFixture;
@@ -73,9 +74,14 @@ public class Capability1Tests extends CommonFixture {
     public Object[][] provideLetExpr() {
         return new Object[][]{{LET_SCALAR}, {LET_MUTI}, {LET_COV}, {LET_LATER_USAGE}};
     }
+    
+    @DataProvider(name = "unaryInducedOps")
+    public Object[][] provideUnaryInducedOps() {
+        return new Object[][]{{MINUS}};
+    }
 
-    @DataProvider(name = "inducedOps")
-    public Object[][] provideInducedOps() {
+    @DataProvider(name = "binaryInducedOps")
+    public Object[][] provideBinaryInducedOps() {
         return new Object[][]{{BOOLEAN_OP_ON_COV}, {SCALAR_ADDITION_ON_COV}};
     }
 
@@ -114,8 +120,13 @@ public class Capability1Tests extends CommonFixture {
         assertCoverageOutput(data);
     }
 
-    @Test(description = "Induced Operations on Coverages", dataProvider = "inducedOps")
-    public void testInducedOps(QueryAndOracle data) throws JSONException {
+    @Test(description = "Unary Induced Operations", dataProvider = "unaryInducedOps")
+    public void testUnaryInducedOps(QueryAndOracle data) throws JSONException {
+        assertCoverageOutput(data);
+    }
+
+    @Test(description = "Binary Induced Operations", dataProvider = "binaryInducedOps")
+    public void testBinaryInducedOps(QueryAndOracle data) throws JSONException {
         assertCoverageOutput(data);
     }
 
