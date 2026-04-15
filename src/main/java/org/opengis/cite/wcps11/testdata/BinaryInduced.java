@@ -92,4 +92,9 @@ public class BinaryInduced {
 
     public static final QueryAndOracle LESS_EQ_COV = injectArgumentsCov("2", "1", "$a <= $b", "false");
 
+    public static final QueryAndOracle AND_COV = injectArgumentsCov("1", "1", "($a != 1) and ($b = 1)", "false");
+
+    public static final QueryAndOracle OR_COV = injectArgumentsCov("1", "1", "($a != 1) or ($b = 1)", "true");
+
+    public static final QueryAndOracle XOR_COV = injectArgumentsCov("1", "1", "($a != 1) xor ($b = 1)", "true");
 }
