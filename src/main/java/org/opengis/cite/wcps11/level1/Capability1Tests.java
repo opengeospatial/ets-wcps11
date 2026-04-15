@@ -2,6 +2,7 @@ package org.opengis.cite.wcps11.level1;
 
 import static org.opengis.cite.wcps11.testdata.xWcps.*;
 import static org.opengis.cite.wcps11.testdata.UnaryInduced.*;
+import static org.opengis.cite.wcps11.testdata.BinaryInduced.*;
 
 import org.json.JSONException;
 import org.opengis.cite.wcps11.CommonFixture;
@@ -77,12 +78,12 @@ public class Capability1Tests extends CommonFixture {
     
     @DataProvider(name = "unaryInducedOps")
     public Object[][] provideUnaryInducedOps() {
-        return new Object[][]{{MINUS}};
+        return new Object[][]{{MINUS}, {ABS}};
     }
 
     @DataProvider(name = "binaryInducedOps")
     public Object[][] provideBinaryInducedOps() {
-        return new Object[][]{{BOOLEAN_OP_ON_COV}, {SCALAR_ADDITION_ON_COV}};
+        return new Object[][]{{BOOLEAN_OP_ON_COV}, {SCALAR_ADDITION_ON_COV}, {MUL}, {DIV}};
     }
 
     @DataProvider(name = "switchExprScalar")

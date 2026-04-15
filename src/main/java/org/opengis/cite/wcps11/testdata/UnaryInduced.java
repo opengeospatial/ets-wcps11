@@ -16,8 +16,17 @@ public class UnaryInduced {
     private static final String INDUCED_UNARY_OP_ORACLE_TEMPLATE =
             "[{0},{0},{0},{0},{0}]";
     
-    public static final QueryAndOracle MINUS = new QueryAndOracle(
-        MessageFormat.format(INDUCED_UNARY_OP_QUERY_TEMPLATE, "1", "-$a"),
-        MessageFormat.format(INDUCED_UNARY_OP_ORACLE_TEMPLATE, "-1")
-    );
+    private static QueryAndOracle injectArguments(String constant, String expression, String expected) {
+        return new QueryAndOracle(
+            MessageFormat.format(INDUCED_UNARY_OP_QUERY_TEMPLATE, constant, expression),
+            MessageFormat.format(INDUCED_UNARY_OP_ORACLE_TEMPLATE, expected)
+        );
+    }
+
+    public static final QueryAndOracle MINUS = injectArguments("1", "-$a", "-1");
+
+    public static final QueryAndOracle PLUS = injectArguments("-2", "+$a", "2");
+
+    public static final QueryAndOracle ABS = injectArguments("-3", "abs($a)", "3");
+
 }
