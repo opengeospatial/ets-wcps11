@@ -25,5 +25,17 @@ public class BinaryInduced {
 
     public static final QueryAndOracle MUL = injectArgumentsScalar("2", "3 * $a", "6");
 
-    public static final QueryAndOracle DIV = injectArgumentsScalar("2", "10 / $a", "5");
+    public static final QueryAndOracle DIV = injectArgumentsScalar("10", "$a / 2", "5");
+
+    public static final QueryAndOracle EQ = injectArgumentsScalar("2", "2 = $a", "true");
+
+    public static final QueryAndOracle NEQ = injectArgumentsScalar("2", "$a != 2", "false");
+
+    public static final QueryAndOracle GREATER = injectArgumentsScalar("2", "3 > $a", "true");
+
+    public static final QueryAndOracle LESS = injectArgumentsScalar("4", "$a < 3", "false");
+
+    public static final QueryAndOracle GREATER_EQ = injectArgumentsScalar("2", "1 >= $a", "false");
+
+    public static final QueryAndOracle LESS_EQ = injectArgumentsScalar("2", "$a <= 2", "true");
 }
