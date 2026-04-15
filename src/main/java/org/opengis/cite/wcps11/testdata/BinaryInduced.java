@@ -70,6 +70,12 @@ public class BinaryInduced {
 
     public static final QueryAndOracle LESS_EQ_SCALAR = injectArgumentsScalar("2", "$a <= 2", "true");
 
+    public static final QueryAndOracle AND_SCALAR = injectArgumentsScalar("1", "true and ($a = 1)", "true");
+
+    public static final QueryAndOracle OR_SCALAR = injectArgumentsScalar("2", "false or ($a = 1)", "false");
+
+    public static final QueryAndOracle XOR_SCALAR = injectArgumentsScalar("1", "($a = 1) xor true", "false");
+
     public static final QueryAndOracle MUL_COV = injectArgumentsCov("2", "2", "$a * $b", "4");
 
     public static final QueryAndOracle DIV_COV = injectArgumentsCov("9", "3", "$a / $b", "3");

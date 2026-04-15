@@ -85,7 +85,7 @@ public class Capability1Tests extends CommonFixture {
     public Object[][] provideBinaryInducedOps() {
         return new Object[][]{{BOOLEAN_OP_ON_COV}, {SCALAR_ADDITION_ON_COV},
                               {MUL_SCALAR}, {DIV_SCALAR}, {EQ_SCALAR}, {NEQ_SCALAR}, {GREATER_SCALAR}, 
-                              {LESS_SCALAR}, {GREATER_EQ_SCALAR}, {LESS_EQ_SCALAR}};
+                              {LESS_SCALAR}, {GREATER_EQ_SCALAR}, {LESS_EQ_SCALAR}, {AND_SCALAR}, {OR_SCALAR}, {XOR_SCALAR}};
     }
 
     @DataProvider(name = "switchExprScalar")
