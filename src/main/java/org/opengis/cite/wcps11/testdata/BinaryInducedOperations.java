@@ -2,7 +2,7 @@ package org.opengis.cite.wcps11.testdata;
 
 import java.text.MessageFormat;
 
-public class BinaryInduced {
+public class BinaryInducedOperations {
     private static final String INDUCED_BINARY_OP_WITH_SCALAR_QUERY_TEMPLATE =
             "let $a := coverage newCov\r\n" + //
                         "domain crs \"OGC:Index1D\" with\r\n" + //

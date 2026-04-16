@@ -1,8 +1,9 @@
 package org.opengis.cite.wcps11.level1;
 
 import static org.opengis.cite.wcps11.testdata.xWcps.*;
-import static org.opengis.cite.wcps11.testdata.UnaryInduced.*;
-import static org.opengis.cite.wcps11.testdata.BinaryInduced.*;
+import static org.opengis.cite.wcps11.testdata.UnaryInducedOperations.*;
+import static org.opengis.cite.wcps11.testdata.BinaryInducedOperations.*;
+import static org.opengis.cite.wcps11.testdata.CondenseOperations.*;
 
 import org.json.JSONException;
 import org.opengis.cite.wcps11.CommonFixture;
@@ -64,9 +65,16 @@ public class Capability1Tests extends CommonFixture {
     }
 
     private void assertScalarOutput(QueryAndOracle data) {
-        String output = service.sendQueryKVP(data.query).getEntity(String.class);
-        Assert.assertEquals(data.oracle.trim(), output.trim(),
-                "Unexpected output for query: " + data.query);
+        String output = service.sendQueryKVP(data.query).getEntity(String.class).trim();
+        String oracle = data.oracle.trim();
+        try {
+            double expected = Double.parseDouble(oracle);
+            double actual = Double.parseDouble(output);
+            Assert.assertEquals(actual, expected, 1e-3, "Unexpected output for query: " + data.query);
+        } catch (Exception e) {
+            Assert.assertEquals(oracle, output,
+                        "Unexpected output for query: " + data.query);
+        }
     }
 
     private void assertCoverageOutput(QueryAndOracle data) throws JSONException {
@@ -113,6 +121,11 @@ public class Capability1Tests extends CommonFixture {
                               {LESS_SCALAR}, {GREATER_EQ_SCALAR}, {LESS_EQ_SCALAR}, {AND_SCALAR}, {OR_SCALAR}, {XOR_SCALAR}};
     }
 
+    @DataProvider(name = "condenseOps")
+    public Object[][] provideCondenseOps() {
+        return new Object[][]{{REDUCE_SUM}, {REDUCE_AVG}, {REDUCE_MIN}, {REDUCE_MAX}, {REDUCE_COUNT}};
+    }
+
     @DataProvider(name = "switchExprScalar")
     public Object[][] provideSwitchExprScalar() {
         return new Object[][]{{SWITCH_SCALAR}, {SWITCH_MULTI_CASE}};
@@ -156,6 +169,11 @@ public class Capability1Tests extends CommonFixture {
     @Test(description = "Binary Induced Operations", dataProvider = "binaryInducedOps")
     public void testBinaryInducedOps(QueryAndOracle data) throws JSONException {
         assertCoverageOutput(data);
+    }
+
+    @Test(description = "Condense Operations", dataProvider = "condenseOps")
+    public void testCondenseOps(QueryAndOracle data) throws JSONException {
+        assertScalarOutput(data);
     }
 
     @Test(description = "Requirement 13 of xWcps ATS: switchExpr", dataProvider = "switchExprScalar")

@@ -2,7 +2,7 @@ package org.opengis.cite.wcps11.testdata;
 
 import java.text.MessageFormat;
 
-public class UnaryInduced {
+public class UnaryInducedOperations {
     private static final String INDUCED_UNARY_OP_QUERY_TEMPLATE =
             "let $a := coverage newCov\r\n" + //
                         "domain crs \"OGC:Index1D\" with\r\n" + //
