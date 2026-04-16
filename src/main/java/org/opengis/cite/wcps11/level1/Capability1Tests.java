@@ -10,6 +10,9 @@ import org.opengis.cite.wcps11.SuiteAttribute;
 import org.opengis.cite.wcps11.testdata.QueryAndOracle;
 import org.opengis.cite.wcps11.util.WCPSWrapper;
 import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
+import org.skyscreamer.jsonassert.JSONCompareResult;
+import org.skyscreamer.jsonassert.comparator.DefaultComparator;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
@@ -19,6 +22,25 @@ import org.testng.annotations.Test;
  * Includes various tests of capability 1.
  */
 public class Capability1Tests extends CommonFixture {
+
+    private static class Comparator extends DefaultComparator {
+        public Comparator(JSONCompareMode mode) {
+            super(mode);
+        }
+
+        @Override
+        public void compareValues(String prefix, Object expected, Object actual, JSONCompareResult result) throws JSONException {
+            if (expected instanceof Number && actual instanceof Number) {
+                double expectedNum = ((Number) expected).doubleValue();
+                double actualNum = ((Number) actual).doubleValue();
+                if (Math.abs(expectedNum - actualNum) > 1e-3) {
+                    result.fail(prefix, expected, actual);
+                }
+            } else {
+                super.compareValues(prefix, expected, actual, result);
+            }
+        }
+    }
 
     private WCPSWrapper service;
 
@@ -49,7 +71,7 @@ public class Capability1Tests extends CommonFixture {
 
     private void assertCoverageOutput(QueryAndOracle data) throws JSONException {
         String output = service.sendQueryKVP(data.query).getEntity(String.class);
-        JSONAssert.assertEquals("Unexpected coverage output for query: " + data.query, output, data.oracle, true);
+        JSONAssert.assertEquals("Unexpected coverage output for query: " + data.query, output, data.oracle, new Comparator(JSONCompareMode.STRICT));
     }
 
     private void assertErrorResponse(QueryAndOracle data) {
@@ -78,7 +100,10 @@ public class Capability1Tests extends CommonFixture {
     
     @DataProvider(name = "unaryInducedOps")
     public Object[][] provideUnaryInducedOps() {
-        return new Object[][]{{MINUS}, {ABS}};
+        return new Object[][]{{MINUS}, {ABS},
+                              {SQRT}, {SIN}, {COS}, {TAN}, {SINH}, {COSH}, {TANH},
+                              {ASIN}, {ACOS}, {ATAN}, {EXP}, {LOG}, {LN}, {POW},
+                              {FIELD_EXPR}, {CAST}};
     }
 
     @DataProvider(name = "binaryInducedOps")
