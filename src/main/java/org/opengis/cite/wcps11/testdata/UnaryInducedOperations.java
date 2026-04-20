@@ -4,13 +4,13 @@ import java.text.MessageFormat;
 
 public class UnaryInducedOperations {
     private static final String INDUCED_UNARY_OP_QUERY_TEMPLATE =
-            "let $a := coverage newCov\r\n" + //
+            "let $a := (coverage newCov\r\n" + //
                         "domain crs \"OGC:Index1D\" with\r\n" + //
                         "x index (1:5)\r\n" + //
                         "range type\r\n" + //
                         "elem quantity int\r\n" + //
                         "range set\r\n" + //
-                        "{0}\r\n" + //
+                        "{0})\r\n" + //
                         "return encode({1}, \"application/json\")";
     
     private static final String INDUCED_UNARY_OP_ORACLE_TEMPLATE =
@@ -57,21 +57,36 @@ public class UnaryInducedOperations {
 
     public static final QueryAndOracle POW = injectArguments("2", "pow($a, 3.5)", "11.3137085");
 
+    public static final QueryAndOracle BIT_1 = injectArguments("1", "bit($a, (unsigned int)0)", "true");
+
+    public static final QueryAndOracle BIT_2 = injectArguments("1", "bit($a, (unsigned int)1)", "false");
+
+    public static final QueryAndOracle NOT = new QueryAndOracle(
+        "let $a := (coverage newCov\r\n" + //
+                        "domain crs \"OGC:Index1D\" with\r\n" + //
+                        "x index (1:5)\r\n" + //
+                        "range type\r\n" + //
+                        "elem quantity boolean\r\n" + //
+                        "range set\r\n" + //
+                        "false)\r\n" + //
+                        "return encode(not($a), \"application/json\")"
+    );
+
     public static final QueryAndOracle CAST = new QueryAndOracle(
-        "let $a := coverage newCov\r\n" + //
+        "let $a := (coverage newCov\r\n" + //
                         "domain crs \"OGC:Index2D\" with\r\n" + //
                         "x index (0:1)\r\n," + //
                         "y index (0:2)\r\n" + //
                         "range type\r\n" + //
                         "elem quantity float\r\n" + //
                         "range set\r\n" + //
-                        "2.44\r\n" + //
+                        "2.44)\r\n" + //
                         "return encode((int)$a, \"application/json\")",
         "[[2,2,2], [2,2,2]]"
     );
 
     public static final QueryAndOracle FIELD_EXPR = new QueryAndOracle(
-        "let $a := coverage newCov\r\n" + //
+        "let $a := (coverage newCov\r\n" + //
                         "domain crs \"OGC:Index2D\" with\r\n" + //
                         "x index (1:5),\r\n" + //
                         "y index (4:8)\r\n" + //
@@ -79,9 +94,12 @@ public class UnaryInducedOperations {
                         "field1 quantity int,\r\n" + //
                         "field2 quantity int\r\n" + //
                         "range set\r\n" + //
-                        "{field1: 1, field2: 2}\r\n" + //
+                        "{field1: 1, field2: 2})\r\n" + //
                         "return encode($a.field1, \"application/json\")\r\n",
         "[[1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1]]"
     );
 
+    public static final QueryAndOracle UNSUPPORTED_TYPE = new QueryAndOracle(
+        MessageFormat.format(INDUCED_UNARY_OP_QUERY_TEMPLATE, "13", "not($a)")
+    );
 }

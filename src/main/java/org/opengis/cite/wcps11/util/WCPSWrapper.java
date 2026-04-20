@@ -3,6 +3,11 @@ package org.opengis.cite.wcps11.util;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 import javax.xml.transform.Source;
 
@@ -33,6 +38,7 @@ public class WCPSWrapper {
         params.put("request", "ProcessCoverages");
         params.put("version", "2.0.1");
         params.put("query", forClause + query);
+
         return client.handle(ClientUtils.buildGetRequest(serviceEndpoint, params));
     }
 

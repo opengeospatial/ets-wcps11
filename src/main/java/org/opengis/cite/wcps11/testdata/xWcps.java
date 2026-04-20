@@ -192,31 +192,6 @@ public class xWcps {
         "[[[\"0 0\",\"0 1\",\"0 2\",\"0 3\",\"0 4\"],[\"1 1\",\"1 2\",\"1 3\",\"1 4\",\"1 5\"],[\"2 2\",\"2 3\",\"2 4\",\"2 5\",\"2 6\"],[\"3 3\",\"3 4\",\"3 5\",\"3 6\",\"3 7\"],[\"4 4\",\"4 5\",\"4 6\",\"4 7\",\"4 8\"]],[[\"1 0\",\"1 1\",\"1 2\",\"1 3\",\"1 4\"],[\"2 1\",\"2 2\",\"2 3\",\"2 4\",\"2 5\"],[\"3 2\",\"3 3\",\"3 4\",\"3 5\",\"3 6\"],[\"4 3\",\"4 4\",\"4 5\",\"4 6\",\"4 7\"],[\"5 4\",\"5 5\",\"5 6\",\"5 7\",\"5 8\"]],[[\"2 0\",\"2 1\",\"2 2\",\"2 3\",\"2 4\"],[\"3 1\",\"3 2\",\"3 3\",\"3 4\",\"3 5\"],[\"4 2\",\"4 3\",\"4 4\",\"4 5\",\"4 6\"],[\"5 3\",\"5 4\",\"5 5\",\"5 6\",\"5 7\"],[\"6 4\",\"6 5\",\"6 6\",\"6 7\",\"6 8\"]],[[\"3 0\",\"3 1\",\"3 2\",\"3 3\",\"3 4\"],[\"4 1\",\"4 2\",\"4 3\",\"4 4\",\"4 5\"],[\"5 2\",\"5 3\",\"5 4\",\"5 5\",\"5 6\"],[\"6 3\",\"6 4\",\"6 5\",\"6 6\",\"6 7\"],[\"7 4\",\"7 5\",\"7 6\",\"7 7\",\"7 8\"]],[[\"4 0\",\"4 1\",\"4 2\",\"4 3\",\"4 4\"],[\"5 1\",\"5 2\",\"5 3\",\"5 4\",\"5 5\"],[\"6 2\",\"6 3\",\"6 4\",\"6 5\",\"6 6\"],[\"7 3\",\"7 4\",\"7 5\",\"7 6\",\"7 7\"],[\"8 4\",\"8 5\",\"8 6\",\"8 7\",\"8 8\"]]]"
     );
 
-    // --- Induced operations test cases ---
-
-    public static final QueryAndOracle BOOLEAN_OP_ON_COV = new QueryAndOracle(
-        "return encode((coverage newCov\r\n" + //
-                        "domain crs \"OGC:Index1D\" with\r\n" + //
-                        "x index (1:5)\r\n" + //
-                        "range type\r\n" + //
-                        "elem quantity int\r\n" + //
-                        "range set\r\n" + //
-                        "x) > 2, \"application/json\")",
-        "[false,false,true,true,true]"
-    );
-
-    public static final QueryAndOracle SCALAR_ADDITION_ON_COV = new QueryAndOracle(
-        "return encode((coverage newCov\r\n" + //
-                        "domain crs \"OGC:Index2D\" with\r\n" + //
-                        "x index (1:5),\r\n" + //
-                        "y index (4:8)\r\n" + //
-                        "range type\r\n" + //
-                        "elem quantity int\r\n" + //
-                        "range set\r\n" + //
-                        "x + y) + 10, \"application/json\")",
-        "[[15,16,17,18,19],[16,17,18,19,20],[17,18,19,20,21],[18,19,20,21,22],[19,20,21,22,23]]"
-    );
-
     // --- letExpr test cases ---
 
     public static final QueryAndOracle LET_SCALAR = new QueryAndOracle(
@@ -230,19 +205,19 @@ public class xWcps {
     );
 
     public static final QueryAndOracle LET_COV = new QueryAndOracle(
-        "let $a := coverage newCov\r\n" + //
+        "let $a := (coverage newCov\r\n" + //
                         "domain crs \"OGC:Index1D\" with\r\n" + //
                         "x index (1:5)\r\n" + //
                         "range type\r\n" + //
                         "elem quantity int\r\n" + //
                         "range set\r\n" + //
-                        "1\r\n" + //
+                        "1)\r\n" + //
                         "return encode($a, \"application/json\")",
         "[1,1,1,1,1]"
     );
 
     public static final QueryAndOracle LET_LATER_USAGE = new QueryAndOracle(
-        "let $val := 1\r\n" + //
+        "let $val := (1)\r\n" + //
                         "return encode(coverage newCov\r\n" + //
                         "domain crs \"OGC:Index1D\" with\r\n" + //
                         "x index (1:5)\r\n" + //
@@ -271,7 +246,7 @@ public class xWcps {
     );
 
     public static final QueryAndOracle SWITCH_COV = new QueryAndOracle(
-        "let $a := coverage newCov\r\n" + //
+        "let $a := (coverage newCov\r\n" + //
                         "domain crs \"OGC:Index3D\" with\r\n" + //
                         "x index (0:3),\r\n" + //
                         "y index (0:3),\r\n" + //
@@ -279,7 +254,7 @@ public class xWcps {
                         "range type\r\n" + //
                         "elem quantity int\r\n" + //
                         "range set\r\n" + //
-                        "x + y + z\r\n" + //
+                        "x + y + z)\r\n" + //
                         "return encode(switch\r\n" + //
                         "case $a > 5\r\n" + //
                         "return 6\r\n" + //
@@ -293,7 +268,7 @@ public class xWcps {
     );
 
     public static final QueryAndOracle SWITCH_COV_OUTPUT = new QueryAndOracle(
-        "let $a := coverage newCov\r\n" + //
+        "let $a := (coverage newCov\r\n" + //
                         "domain crs \"OGC:Index2D\" with\r\n" + //
                         "x index (1:5),\r\n" + //
                         "y index (4:8)\r\n" + //
@@ -301,7 +276,7 @@ public class xWcps {
                         "elem quantity int\r\n" + //
                         "range set\r\n" + //
                         "x + y,\r\n" + //
-                        "$b := $a + 100\r\n" + //
+                        "$b := $a + 100)\r\n" + //
                         "return encode(switch case $a > 8 return $a default return $b,\r\n" + //
                         "\"application/json\")",
         "[[105,106,107,108,9],[106,107,108,9,10],[107,108,9,10,11],[108,9,10,11,12],[9,10,11,12,13]]"

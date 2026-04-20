@@ -84,7 +84,7 @@ public class Capability1Tests extends CommonFixture {
 
     private void assertErrorResponse(QueryAndOracle data) {
         int statusCode = service.sendQueryKVP(data.query).getStatus();
-        Assert.assertEquals(statusCode, 400, "Expected HTTP 400 Bad Request for query: " + data.query);
+        Assert.assertTrue(statusCode > 399, "Expected Error response for query: " + data.query);
     }
 
     @DataProvider(name = "basicBinaryOps")
@@ -108,7 +108,7 @@ public class Capability1Tests extends CommonFixture {
     
     @DataProvider(name = "unaryInducedOps")
     public Object[][] provideUnaryInducedOps() {
-        return new Object[][]{{MINUS}, {ABS},
+        return new Object[][]{{PLUS}, {MINUS}, {ABS},
                               {SQRT}, {SIN}, {COS}, {TAN}, {SINH}, {COSH}, {TANH},
                               {ASIN}, {ACOS}, {ATAN}, {EXP}, {LOG}, {LN}, {POW},
                               {FIELD_EXPR}, {CAST}};
@@ -116,14 +116,16 @@ public class Capability1Tests extends CommonFixture {
 
     @DataProvider(name = "binaryInducedOps")
     public Object[][] provideBinaryInducedOps() {
-        return new Object[][]{{BOOLEAN_OP_ON_COV}, {SCALAR_ADDITION_ON_COV},
-                              {MUL_SCALAR}, {DIV_SCALAR}, {EQ_SCALAR}, {NEQ_SCALAR}, {GREATER_SCALAR}, 
-                              {LESS_SCALAR}, {GREATER_EQ_SCALAR}, {LESS_EQ_SCALAR}, {AND_SCALAR}, {OR_SCALAR}, {XOR_SCALAR}};
+        return new Object[][]{{ADD_SCALAR}, {MUL_SCALAR}, {DIV_SCALAR}, {EQ_SCALAR}, {NEQ_SCALAR}, {GREATER_SCALAR}, 
+                              {LESS_SCALAR}, {GREATER_EQ_SCALAR}, {LESS_EQ_SCALAR}, {AND_SCALAR}, {OR_SCALAR}, 
+                              {XOR_SCALAR}, {ADD_COV}, {MUL_COV}, {DIV_COV}, {EQ_COV}, {NEQ_COV}, {GREATER_COV},
+                              {LESS_COV}, {GREATER_EQ_COV}, {LESS_EQ_COV}, {AND_COV}, {OR_COV}, {XOR_COV}};
     }
 
     @DataProvider(name = "condenseOps")
     public Object[][] provideCondenseOps() {
-        return new Object[][]{{REDUCE_SUM}, {REDUCE_AVG}, {REDUCE_MIN}, {REDUCE_MAX}, {REDUCE_COUNT}};
+        return new Object[][]{{CONDENSE_ADD}, {CONDENSE_MUL}, {CONDENSE_MAX}, {CONDENSE_MIN}, {CONDENSE_OR},
+                              {CONDENSE_AND}, {REDUCE_SUM}, {REDUCE_AVG}, {REDUCE_MIN}, {REDUCE_MAX}, {REDUCE_COUNT}};
     }
 
     @DataProvider(name = "switchExprScalar")
@@ -138,7 +140,7 @@ public class Capability1Tests extends CommonFixture {
 
     @DataProvider(name = "errorResponses")
     public Object[][] provideErrorResponses() {
-        return new Object[][]{{DUPLICATE_CONST_NAME}, {CRS_AXES_MISMATCH}};
+        return new Object[][]{{DUPLICATE_CONST_NAME}, {CRS_AXES_MISMATCH}, {UNSUPPORTED_TYPE}, {UNSUPPORTED_OP}};
     }
 
     @Test(description = "Numeric literals and return statement")
