@@ -105,14 +105,14 @@
             <link>http://testng.org/javadocs/</link>
           </links> -->
         </configuration>
-        <!-- <executions>
+        <executions>
           <execution>
             <id>attach-javadocs</id>
             <goals>
               <goal>jar</goal>
             </goals>
           </execution>
-        </executions> -->
+        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -164,7 +164,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.7.1</version>
-        <!-- <executions>
+        <executions>
           <execution>
             <id>site-package</id>
             <phase>prepare-package</phase>
@@ -172,7 +172,7 @@
               <goal>jar</goal>
             </goals>
           </execution>
-        </executions> -->
+        </executions>
         <dependencies>
           <dependency>
             <groupId>org.asciidoctor</groupId>

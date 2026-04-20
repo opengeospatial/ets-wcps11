@@ -89,7 +89,7 @@ public class Capability1Tests extends CommonFixture {
 
     @DataProvider(name = "basicBinaryOps")
     public Object[][] provideBasicBinaryOps() {
-        return new Object[][]{{SCALAR_ADDITION_1}, {SCALAR_ADDITION_2}};
+        return new Object[][]{{SCALAR_ADDITION_1}, {SCALAR_ADDITION_2}, {BOOLEAN_OP_1}, {BOOLEAN_OP_2}};
     }
 
     @DataProvider(name = "coverageConstructor")
@@ -103,7 +103,7 @@ public class Capability1Tests extends CommonFixture {
 
     @DataProvider(name = "letExpr")
     public Object[][] provideLetExpr() {
-        return new Object[][]{{LET_SCALAR}, {LET_MUTI}, {LET_COV}, {LET_LATER_USAGE}};
+        return new Object[][]{{LET_SCALAR}, {LET_MULTI}, {LET_COV}, {LET_LATER_USAGE}};
     }
     
     @DataProvider(name = "unaryInducedOps")
@@ -111,6 +111,7 @@ public class Capability1Tests extends CommonFixture {
         return new Object[][]{{PLUS}, {MINUS}, {ABS},
                               {SQRT}, {SIN}, {COS}, {TAN}, {SINH}, {COSH}, {TANH},
                               {ASIN}, {ACOS}, {ATAN}, {EXP}, {LOG}, {LN}, {POW},
+                              {BIT_1}, {BIT_2},
                               {FIELD_EXPR}, {CAST}};
     }
 

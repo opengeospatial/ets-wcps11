@@ -199,7 +199,7 @@ public class xWcps {
         "2"
     );
 
-    public static final QueryAndOracle LET_MUTI = new QueryAndOracle(
+    public static final QueryAndOracle LET_MULTI = new QueryAndOracle(
         "let $a := 2, $b := 10 return $a + $b",
         "12"
     );
@@ -275,8 +275,8 @@ public class xWcps {
                         "range type\r\n" + //
                         "elem quantity int\r\n" + //
                         "range set\r\n" + //
-                        "x + y,\r\n" + //
-                        "$b := $a + 100)\r\n" + //
+                        "x + y),\r\n" + //
+                        "$b := ($a + 100)\r\n" + //
                         "return encode(switch case $a > 8 return $a default return $b,\r\n" + //
                         "\"application/json\")",
         "[[105,106,107,108,9],[106,107,108,9,10],[107,108,9,10,11],[108,9,10,11,12],[9,10,11,12,13]]"
