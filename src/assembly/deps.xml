@@ -21,11 +21,11 @@
       <useTransitiveDependencies>true</useTransitiveDependencies>
     </dependencySet>
     <dependencySet>
-      <!-- <excludes>
-        <exclude>org.opengis.cite.teamengine:teamengine-spi</exclude>
-        <exclude>com.sun.jersey:jersey-client</exclude>
+      <excludes>
+        <!-- <exclude>org.opengis.cite.teamengine:teamengine-spi</exclude> -->
+        <!-- <exclude>com.sun.jersey:jersey-client</exclude> -->
         <exclude>org.opengis.cite:schema-utils</exclude>
-      </excludes> -->
+      </excludes>
       <outputDirectory>/</outputDirectory>
       <unpack>false</unpack>
       <scope>runtime</scope>
