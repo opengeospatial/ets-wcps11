@@ -78,6 +78,10 @@ public class BinaryInducedOperations {
 
     public static final QueryAndOracle XOR_SCALAR = injectArgumentsScalar("1", "($a = 1) xor true", "false");
 
+    public static final QueryAndOracle OVERLAY_SCALAR_1 = injectArgumentsScalar("2", "(1 overlay $a)", "1");
+
+    public static final QueryAndOracle OVERLAY_SCALAR_2 = injectArgumentsScalar("0", "($a overlay 3)", "3");
+
     public static final QueryAndOracle ADD_COV = injectArgumentsCov("2", "3", "$a + $b", "5");
 
     public static final QueryAndOracle MUL_COV = injectArgumentsCov("2", "2", "$a * $b", "4");
@@ -101,4 +105,6 @@ public class BinaryInducedOperations {
     public static final QueryAndOracle OR_COV = injectArgumentsCov("1", "1", "($a != 1) or ($b = 1)", "true");
 
     public static final QueryAndOracle XOR_COV = injectArgumentsCov("1", "1", "($a != 1) xor ($b = 1)", "true");
+
+    public static final QueryAndOracle OVERLAY_COV = injectArgumentsCov("2", "3", "($a overlay $b)", "2");
 }
