@@ -25,7 +25,7 @@ public class UnaryInducedOperations {
 
     public static final QueryAndOracle MINUS = injectArguments("1", "-$a", "-1");
 
-    public static final QueryAndOracle PLUS = injectArguments("-2", "+$a", "2");
+    public static final QueryAndOracle PLUS = injectArguments("-2", "+$a", "-2");
 
     public static final QueryAndOracle ABS = injectArguments("-3", "abs($a)", "3");
 
