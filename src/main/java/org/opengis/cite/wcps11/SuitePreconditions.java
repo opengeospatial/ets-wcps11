@@ -24,14 +24,12 @@ public class SuitePreconditions {
     @BeforeSuite
     @SuppressWarnings("rawtypes")
     public void verifyTestSubject(ITestContext testContext) {
-        SuiteAttribute testFileAttr = SuiteAttribute.WCPS_ENDPOINT;
-        Object sutObj = testContext.getSuite().getAttribute(testFileAttr.getName());
-        Class expectedType = testFileAttr.getType();
-        if (null != sutObj && expectedType.isInstance(sutObj)) {
-            // TODO: Verify test subject
-        } else {
+        SuiteAttribute iutAttr = SuiteAttribute.WCPS_WRAPPER;
+        Object sutObj = testContext.getSuite().getAttribute(iutAttr.getName());
+        Class expectedType = iutAttr.getType();
+        if (null == sutObj || !expectedType.isInstance(sutObj)) {
             String msg = String.format("Value of test suite attribute '%s' is missing or is not an instance of %s",
-                    testFileAttr.getName(), expectedType.getName());
+                    iutAttr.getName(), expectedType.getName());
             LOGR.log(Level.SEVERE, msg);
             throw new AssertionError(msg);
         }

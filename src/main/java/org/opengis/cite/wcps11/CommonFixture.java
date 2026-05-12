@@ -45,11 +45,7 @@ public class CommonFixture {
      */
     @BeforeClass
     public void initCommonFixture(ITestContext testContext) {
-        Object obj = testContext.getSuite().getAttribute(SuiteAttribute.CLIENT.getName());
-        if (null != obj) {
-            this.client = Client.class.cast(obj);
-        }
-        obj = testContext.getSuite().getAttribute(SuiteAttribute.WCPS_ENDPOINT.getName());
+        Object obj = testContext.getSuite().getAttribute(SuiteAttribute.WCPS_WRAPPER.getName());
         if (null == obj) {
             throw new SkipException("Test subject not found in ITestContext.");
         }

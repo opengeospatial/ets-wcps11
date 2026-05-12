@@ -7,7 +7,7 @@
   xmlns:tng="java:org.opengis.cite.wcps11.TestNGController">
 
   <ctl:function name="tns:run-ets-wcps11">
-		<ctl:param name="testRunArgs">A Document node containing test run arguments (as XML properties).</ctl:param>
+		<ctl:param name="testRunArgs">A url to a server that implements the WCPS standard.</ctl:param>
     <ctl:param name="outputDir">The directory in which the test results will be written.</ctl:param>
 		<ctl:return>The test results as a Source object (root node).</ctl:return>
 		<ctl:description>Runs the wcps11 ${version} test suite.</ctl:description>
@@ -18,8 +18,8 @@
 	</ctl:function>
 
    <ctl:suite name="tns:ets-wcps11-${version}">
-     <ctl:title>wcps11 Conformance Test Suite</ctl:title>
-     <ctl:description>This test suite verifies compliance of xWCPS features with their specifications in the WCPS standard</ctl:description>
+     <ctl:title>WCPS 1.1 Conformance Test Suite</ctl:title>
+     <ctl:description>This test suite verifies compliance of servers with the WCPS standard.</ctl:description>
      <ctl:starting-test>tns:Main</ctl:starting-test>
    </ctl:suite>
  
@@ -28,7 +28,7 @@
 	  <ctl:code>
         <xsl:variable name="form-data">
            <ctl:form method="POST" width="800" height="600" xmlns="http://www.w3.org/1999/xhtml">
-             <h2>wcps11 Conformance Test Suite</h2>
+             <h2>WCPS 1.1 Conformance Test Suite</h2>
              <div style="background:#F0F8FF" bgcolor="#F0F8FF">
                <p>The implementation under test (IUT) is checked against the <a href="https://docs.ogc.org/is/08-068r3/08-068r3.html">WCPS standard</a></p>
              </div>

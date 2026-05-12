@@ -1,11 +1,6 @@
 package org.opengis.cite.wcps11;
 
-import com.sun.jersey.api.client.Client;
-
-import java.io.File;
-
 import org.opengis.cite.wcps11.util.WCPSWrapper;
-import org.w3c.dom.Document;
 
 /**
  * An enumerated type defining ISuite attributes that may be set to constitute a
@@ -15,21 +10,9 @@ import org.w3c.dom.Document;
 public enum SuiteAttribute {
 
     /**
-     * A client component for interacting with HTTP endpoints.
+     * A wrapper for the WCPS endpoint
      */
-    CLIENT("httpClient", Client.class),
-    /**
-     * A DOM Document that represents the test subject or metadata about it.
-     */
-    TEST_SUBJECT("testSubject", Document.class),
-    /**
-     * A File containing the test subject or a description of it.
-     */
-    TEST_SUBJ_FILE("testSubjectFile", File.class),
-    /**
-     * WCPS endpoint
-     */
-    WCPS_ENDPOINT("wcpsEndpoint", WCPSWrapper.class);
+    WCPS_WRAPPER("wcpsEndpoint", WCPSWrapper.class);
     private final Class attrType;
     private final String attrName;
 

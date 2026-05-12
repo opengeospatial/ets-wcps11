@@ -38,7 +38,7 @@ public class TestSuiteBase extends CommonFixture {
 
     /**
      * Obtains the test subject from the ISuite context. The suite attribute
-     * {@link org.opengis.cite.wcps11.SuiteAttribute#WCPS_ENDPOINT} should
+     * {@link org.opengis.cite.wcps11.SuiteAttribute#WCPS_WRAPPER} should
      * be a WCPSWrapper instance.
      * 
      * @param testContext
@@ -47,7 +47,7 @@ public class TestSuiteBase extends CommonFixture {
     @BeforeClass
     public void obtainTestSubject(ITestContext testContext) {
         Object obj = testContext.getSuite().getAttribute(
-                SuiteAttribute.WCPS_ENDPOINT.getName());
+                SuiteAttribute.WCPS_WRAPPER.getName());
         if ((null != obj) && WCPSWrapper.class.isAssignableFrom(obj.getClass())) {
             this.service = WCPSWrapper.class.cast(obj);
         }

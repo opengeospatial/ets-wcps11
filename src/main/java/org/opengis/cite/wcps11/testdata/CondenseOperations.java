@@ -4,18 +4,19 @@ import java.text.MessageFormat;
 
 public class CondenseOperations {
     
-    private static final String REDUCE_OP_QUERY_TEMPLATE =
-          "let $a := (coverage newCov\r\n" + //
-                        "domain crs \"OGC:Index4D\" with\r\n" + //
-                        "x index (0:5),\r\n" + //
-                        "y index (0:5),\r\n" + //
-                        "z index (0:5),\r\n" + //
-                        "t index (0:5)\r\n" + //
-                        "range type\r\n" + //
-                        "elem quantity int\r\n" + //
-                        "range set\r\n" + //
-                        "x + y + z + t)\r\n" + //
-                        "return {0}";
+    private static final String REDUCE_OP_QUERY_TEMPLATE = String.join("\r\n",
+            "let $a := (coverage newCov",
+            "domain crs \"OGC:Index4D\" with",
+            "x index (0:5),",
+            "y index (0:5),",
+            "z index (0:5),",
+            "t index (0:5)",
+            "range type",
+            "elem quantity int",
+            "range set",
+            "x + y + z + t)",
+            "return {0}"
+    );
     
     public static final QueryAndOracle REDUCE_SUM = new QueryAndOracle(
         MessageFormat.format(REDUCE_OP_QUERY_TEMPLATE, "add($a)"),

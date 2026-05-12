@@ -3,15 +3,16 @@ package org.opengis.cite.wcps11.testdata;
 import java.text.MessageFormat;
 
 public class UnaryInducedOperations {
-    private static final String INDUCED_UNARY_OP_QUERY_TEMPLATE =
-            "let $a := (coverage newCov\r\n" + //
-                        "domain crs \"OGC:Index1D\" with\r\n" + //
-                        "x index (1:5)\r\n" + //
-                        "range type\r\n" + //
-                        "elem quantity int\r\n" + //
-                        "range set\r\n" + //
-                        "{0})\r\n" + //
-                        "return encode({1}, \"application/json\")";
+    private static final String INDUCED_UNARY_OP_QUERY_TEMPLATE = String.join("\r\n",
+            "let $a := (coverage newCov",
+            "domain crs \"OGC:Index1D\" with",
+            "x index (1:5)",
+            "range type",
+            "elem quantity int",
+            "range set",
+            "{0})",
+            "return encode({1}, \"application/json\")"
+    );
     
     private static final String INDUCED_UNARY_OP_ORACLE_TEMPLATE =
             "[{0},{0},{0},{0},{0}]";
@@ -62,40 +63,46 @@ public class UnaryInducedOperations {
     public static final QueryAndOracle BIT_2 = injectArguments("1", "bit($a, (unsigned int)1)", "false");
 
     public static final QueryAndOracle NOT = new QueryAndOracle(
-        "let $a := (coverage newCov\r\n" + //
-                        "domain crs \"OGC:Index1D\" with\r\n" + //
-                        "x index (1:5)\r\n" + //
-                        "range type\r\n" + //
-                        "elem quantity boolean\r\n" + //
-                        "range set\r\n" + //
-                        "false)\r\n" + //
-                        "return encode(not($a), \"application/json\")"
+        String.join("\r\n",
+            "let $a := (coverage newCov",
+            "domain crs \"OGC:Index1D\" with",
+            "x index (1:5)",
+            "range type",
+            "elem quantity boolean",
+            "range set",
+            "false)",
+            "return encode(not($a), \"application/json\")"
+        )
     );
 
     public static final QueryAndOracle CAST = new QueryAndOracle(
-        "let $a := (coverage newCov\r\n" + //
-                        "domain crs \"OGC:Index2D\" with\r\n" + //
-                        "x index (0:1)\r\n," + //
-                        "y index (0:2)\r\n" + //
-                        "range type\r\n" + //
-                        "elem quantity float\r\n" + //
-                        "range set\r\n" + //
-                        "2.44)\r\n" + //
-                        "return encode((int)$a, \"application/json\")",
+        String.join("\r\n",
+            "let $a := (coverage newCov",
+            "domain crs \"OGC:Index2D\" with",
+            "x index (0:1),",
+            "y index (0:2)",
+            "range type",
+            "elem quantity float",
+            "range set",
+            "2.44)",
+            "return encode((int)$a, \"application/json\")"
+        ),
         "[[2,2,2], [2,2,2]]"
     );
 
     public static final QueryAndOracle FIELD_EXPR = new QueryAndOracle(
-        "let $a := (coverage newCov\r\n" + //
-                        "domain crs \"OGC:Index2D\" with\r\n" + //
-                        "x index (1:5),\r\n" + //
-                        "y index (4:8)\r\n" + //
-                        "range type\r\n" + //
-                        "field1 quantity int,\r\n" + //
-                        "field2 quantity int\r\n" + //
-                        "range set\r\n" + //
-                        "{field1: 1, field2: 2})\r\n" + //
-                        "return encode($a.field1, \"application/json\")\r\n",
+        String.join("\r\n",
+            "let $a := (coverage newCov",
+            "domain crs \"OGC:Index2D\" with",
+            "x index (1:5),",
+            "y index (4:8)",
+            "range type",
+            "field1 quantity int,",
+            "field2 quantity int",
+            "range set",
+            "{field1: 1, field2: 2})",
+            "return encode($a.field1, \"application/json\")"
+        ),
         "[[1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1]]"
     );
 

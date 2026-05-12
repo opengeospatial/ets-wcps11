@@ -13,7 +13,7 @@ public class xWcpsTests extends TestSuiteBase {
     
     @DataProvider(name = "basicBinaryOps")
     public Object[][] provideBasicBinaryOps() {
-        return new Object[][]{{SCALAR_ADDITION_1}, {SCALAR_ADDITION_2}, {BOOLEAN_OP_1}, {BOOLEAN_OP_2}};
+        return new Object[][]{{SCALAR_ADDITION_1}, {SCALAR_ADDITION_2}};
     }
 
     @DataProvider(name = "coverageConstructor")

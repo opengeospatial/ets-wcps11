@@ -1,0 +1,1619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wcs20:Capabilities version="2.1.0" xsi:schemaLocation="http://www.opengis.net/wcs/2.0 http://schemas.opengis.net/wcs/2.0/wcsGetCapabilities.xsd" xmlns:wcs20="http://www.opengis.net/wcs/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ras="http://www.rasdaman.org" xmlns:int="http://www.opengis.net/wcs/interpolation/1.0" xmlns:crs="http://www.opengis.net/wcs/service-extension/crs/1.0" xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0" xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0">
+    <ows:ServiceIdentification>
+        <ows:Title>rasdaman</ows:Title>
+        <ows:Abstract>rasdaman server - free download from www.rasdaman.org</ows:Abstract>
+        <ows:ServiceType>OGC WCS</ows:ServiceType>
+        <ows:ServiceTypeVersion>2.0.1</ows:ServiceTypeVersion>
+        <ows:ServiceTypeVersion>2.1.0</ows:ServiceTypeVersion>
+        <ows:Profile>http://www.opengis.net/spec/GMLCOV/1.0/conf/gml</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/GMLCOV/1.0/conf/gml-coverage</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/GMLJP2/2.0/</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_coverage-encoding_jpeg2000/1.0/</ows:Profile>
+        <ows:Profile>https://www.ietf.org/rfc/rfc4180.txt</ows:Profile>
+        <ows:Profile>https://www.www.json.org/</ows:Profile>
+        <ows:Profile>https://www.w3.org/Graphics/JPEG/</ows:Profile>
+        <ows:Profile>http://www.w3.org/TR/PNG/</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_coverage-encoding_netcdf/1.0/</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/GMLCOV/1.0/conf/multipart</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_service-extension_interpolation/1.0/conf/interpolation</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_service-extension_range-subsetting/1.0/conf/record-subsetting</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_service-extension_scaling/1.0/conf/scaling</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_service-extension_processing/2.0/conf/processing</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_protocol-binding_get-kvp/1.0/conf/get-kvp</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_protocol-binding_soap/1.0</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_protocol-binding_post-xml/1.0</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_service-extension_transaction/2.0/conf/insert+delete</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_service-extension_crs/1.0/conf/crs</ows:Profile>
+    </ows:ServiceIdentification>
+    <ows:ServiceProvider>
+        <ows:ProviderName>Constructor University Bremen</ows:ProviderName>
+        <ows:ProviderSite xlink:href="http://rasdaman.org/"/>
+        <ows:ServiceContact>
+            <ows:IndividualName>Prof. Dr. Peter Baumann</ows:IndividualName>
+            <ows:PositionName>Project Leader</ows:PositionName>
+            <ows:ContactInfo>
+                <ows:Phone>
+                    <ows:Voice>+49 421 20040</ows:Voice>
+                </ows:Phone>
+                <ows:Address>
+                    <ows:DeliveryPoint>Campus Ring 1</ows:DeliveryPoint>
+                    <ows:City>Bremen</ows:City>
+                    <ows:PostalCode>28759</ows:PostalCode>
+                    <ows:Country>Germany</ows:Country>
+                    <ows:ElectronicMailAddress>pbaumann@constructor.university</ows:ElectronicMailAddress>
+                </ows:Address>
+            </ows:ContactInfo>
+            <ows:Role>pointOfContact</ows:Role>
+        </ows:ServiceContact>
+    </ows:ServiceProvider>
+    <ows:OperationsMetadata>
+        <ows:Operation name="GetCapabilities">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                    <ows:Post xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+        <ows:Operation name="DescribeCoverage">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                    <ows:Post xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+        <ows:Operation name="GetCoverage">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                    <ows:Post xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+        <ows:Operation name="ProcessCoverages">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                    <ows:Post xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+        <ows:Operation name="InsertCoverage">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                    <ows:Post xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+        <ows:Operation name="UpdateCoverage">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                    <ows:Post xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+        <ows:Operation name="DeleteCoverage">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                    <ows:Post xlink:href="https://ows.rasdaman.org/rasdaman/ows"/>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+        <ows:Constraint name="PostEncoding">
+            <ows:AllowedValues>
+                <ows:Value>XML</ows:Value>
+                <ows:Value>SOAP</ows:Value>
+            </ows:AllowedValues>
+        </ows:Constraint>
+        <ows:ExtendedCapabilities>
+            <inspire_dls:ExtendedCapabilities>
+                <inspire_common:MetadataUrl>
+                    <inspire_common:URL>https://ows.rasdaman.org/rasdaman/ows</inspire_common:URL>
+                    <inspire_common:MediaType>application/vnd.iso.19139+xml</inspire_common:MediaType>
+                </inspire_common:MetadataUrl>
+                <inspire_common:SupportedLanguages>
+                    <inspire_common:DefaultLanguage>
+                        <inspire_common:Language>eng</inspire_common:Language>
+                    </inspire_common:DefaultLanguage>
+                </inspire_common:SupportedLanguages>
+                <inspire_common:ResponseLanguage>
+                    <inspire_common:Language>eng</inspire_common:Language>
+                </inspire_common:ResponseLanguage>
+                <inspire_dls:SpatialDataSetIdentifier>
+                    <inspire_common:Code>rasdaman</inspire_common:Code>
+                </inspire_dls:SpatialDataSetIdentifier>
+            </inspire_dls:ExtendedCapabilities>
+        </ows:ExtendedCapabilities>
+    </ows:OperationsMetadata>
+    <wcs20:ServiceMetadata>
+        <wcs20:formatSupported>application/gml+xml</wcs20:formatSupported>
+        <wcs20:formatSupported>image/jpeg</wcs20:formatSupported>
+        <wcs20:formatSupported>image/jpg</wcs20:formatSupported>
+        <wcs20:formatSupported>image/png</wcs20:formatSupported>
+        <wcs20:formatSupported>image/tiff</wcs20:formatSupported>
+        <wcs20:formatSupported>image/gtiff</wcs20:formatSupported>
+        <wcs20:formatSupported>image/bmp</wcs20:formatSupported>
+        <wcs20:formatSupported>image/jp2</wcs20:formatSupported>
+        <wcs20:formatSupported>application/netcdf</wcs20:formatSupported>
+        <wcs20:formatSupported>text/csv</wcs20:formatSupported>
+        <wcs20:formatSupported>application/json</wcs20:formatSupported>
+        <wcs20:formatSupported>application/dem</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-dted</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-ehdr</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-elas</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-envi</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-ers</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-fit</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-fits</wcs20:formatSupported>
+        <wcs20:formatSupported>image/gif</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-netcdf-gmt</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-gs7bg</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-gsag</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-gsbg</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-gta</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-hf2</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-erdas-hfa</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-ida</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-ingr</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-isis2</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-erdas-lan</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-mff2</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-nitf</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-paux</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-pcidsk</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-pcraster</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-pdf</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-pnm</wcs20:formatSupported>
+        <wcs20:formatSupported>text/x-r</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-rmf</wcs20:formatSupported>
+        <wcs20:formatSupported>image/x-sgi</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-vrt</wcs20:formatSupported>
+        <wcs20:formatSupported>image/xpm</wcs20:formatSupported>
+        <wcs20:formatSupported>application/x-ogc-zmap</wcs20:formatSupported>
+        <wcs20:formatSupported>text/html</wcs20:formatSupported>
+        <wcs20:Extension>
+            <int:InterpolationMetadata>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/near</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/bilinear</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/cubic</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/cubicspline</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/lanczos</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/average</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/mode</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/max</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/min</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/med</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/q1</int:InterpolationSupported>
+                <int:InterpolationSupported>http://www.opengis.net/def/interpolation/OGC/1.0/q3</int:InterpolationSupported>
+            </int:InterpolationMetadata>
+            <crs:CrsMetadata>
+                <crs:crsSupported>http://www.opengis.net/def/crs/EPSG/0/4326</crs:crsSupported>
+            </crs:CrsMetadata>
+        </wcs20:Extension>
+    </wcs20:ServiceMetadata>
+    <wcs20:Contents>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>AverageChloroColor</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="3">
+                <ows:LowerCorner>"2015-01-01T00:00:00.000Z" -90 -180</ows:LowerCorner>
+                <ows:UpperCorner>"2015-05-01T00:00:00.000Z" 90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>97200000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>129589350</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>AverageChloroColorScaled</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="3">
+                <ows:LowerCorner>"2002-07-01T00:00:00.000Z" -90 -180</ows:LowerCorner>
+                <ows:UpperCorner>"2015-05-01T00:00:00.000Z" 90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>188325000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>AvgLandTemp</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="3">
+                <ows:LowerCorner>"2000-02-01T00:00:00.000Z" -90 -180</ows:LowerCorner>
+                <ows:UpperCorner>"2015-06-01T00:00:00.000Z" 90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>4809618404</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>AvgTemperatureColor</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="3">
+                <ows:LowerCorner>"2000-02-01T00:00:00.000Z" -90 -180</ows:LowerCorner>
+                <ows:UpperCorner>"2015-07-01T00:00:00.000Z" 90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>3596400000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>3895705950</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>AvgTemperatureColorScaled</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="3">
+                <ows:LowerCorner>"2000-02-01T00:00:00.000Z" -90 -180</ows:LowerCorner>
+                <ows:UpperCorner>"2015-07-01T00:00:00.000Z" 90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>224775000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>Bavaria_50_DSM</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>10.9583638 47.408514562220105</ows:LowerCorner>
+                <ows:UpperCorner>11.07342704094083 47.5218092</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>47.408514562220105 10.9583638</ows:LowerCorner>
+                <ows:UpperCorner>47.5218092 11.07342704094083</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>2408868</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Long</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>BlueMarbleCov</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>-90 -180</ows:LowerCorner>
+                <ows:UpperCorner>90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>486000000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>526457286</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>Germany_DTM</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>4.999583333333334 46.9995833333333675899</ows:LowerCorner>
+                <ows:UpperCorner>16.0004166666666246501 56.000416666666666</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>46.9995833333333675899 4.999583333333334</ows:LowerCorner>
+                <ows:UpperCorner>56.000416666666666 16.0004166666666246501</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>285168002</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>308926162</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>LandsatMultiBand</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>4.860752385843076 52.4371762592109483533</ows:LowerCorner>
+                <ows:UpperCorner>9.0075919347969410802 55.02379763710658</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/32632" dimensions="2">
+                <ows:LowerCorner>234989.62194009003 5816800.1278945779996550000000000000000000000000000000004097923759609445</ows:LowerCorner>
+                <ows:UpperCorner>500467.121940090035089999999999999999999999999999999999987817965013528 6097439.627894578</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>68779233</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>NIR</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/Index2D" dimensions="2">
+                <ows:LowerCorner>0 0</ows:LowerCorner>
+                <ows:UpperCorner>1916 1076</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>6184848</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>i,j</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>NN3_1</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/Index1D" dimensions="1">
+                <ows:LowerCorner>-0.5</ows:LowerCorner>
+                <ows:UpperCorner>125.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>504</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>i</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>NN3_2</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/Index1D" dimensions="1">
+                <ows:LowerCorner>-0.5</ows:LowerCorner>
+                <ows:UpperCorner>125.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>504</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>i</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>NN3_3</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/Index1D" dimensions="1">
+                <ows:LowerCorner>-0.5</ows:LowerCorner>
+                <ows:UpperCorner>125.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>504</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>i</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>NN3_4</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/Index1D" dimensions="1">
+                <ows:LowerCorner>-0.5</ows:LowerCorner>
+                <ows:UpperCorner>125.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>504</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>i</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>RadianceColorScaled</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="3">
+                <ows:LowerCorner>"2002-07-01T00:00:00.000Z" -90 -180</ows:LowerCorner>
+                <ows:UpperCorner>"2015-01-01T00:00:00.000Z" 90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>182250000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>S2_L2A_32631_B01_60m</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>5.158119124176218 45.0277142282970497608</ows:LowerCorner>
+                <ows:UpperCorner>5.9307166038755738654 45.269926091621116</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32631" dimensions="3">
+                <ows:LowerCorner>"2021-04-07T23:54:58.500Z" 669960 4990200</ows:LowerCorner>
+                <ows:UpperCorner>"2021-04-10T00:05:01.500Z" 729960 5015220</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>834000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>S2_L2A_32631_B03_10m</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>5.158633444629381 45.02805527977479612276</ows:LowerCorner>
+                <ows:UpperCorner>5.93115422023977525948 45.26991641981715</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32631" dimensions="3">
+                <ows:LowerCorner>"2021-04-07T23:54:58.500Z" 670000 4990220</ows:LowerCorner>
+                <ows:UpperCorner>"2021-04-10T00:05:01.500Z" 730000 5015220</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>30000000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>S2_L2A_32631_B04_10m</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>5.158633444629381 45.02805527977479612276</ows:LowerCorner>
+                <ows:UpperCorner>5.93115422023977525948 45.26991641981715</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32631" dimensions="3">
+                <ows:LowerCorner>"2021-04-07T23:54:58.500Z" 670000 4990220</ows:LowerCorner>
+                <ows:UpperCorner>"2021-04-10T00:05:01.500Z" 730000 5015220</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>30000000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>S2_L2A_32631_B08_10m</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>5.158633444629381 45.02805527977479612276</ows:LowerCorner>
+                <ows:UpperCorner>5.93115422023977525948 45.26991641981715</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32631" dimensions="3">
+                <ows:LowerCorner>"2021-04-07T23:54:58.500Z" 670000 4990220</ows:LowerCorner>
+                <ows:UpperCorner>"2021-04-10T00:05:01.500Z" 730000 5015220</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>30000000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>S2_L2A_32631_B12_20m</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>5.158633444629381 45.02817687914133325392</ows:LowerCorner>
+                <ows:UpperCorner>5.93103262087323812832 45.26991641981715</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32631" dimensions="3">
+                <ows:LowerCorner>"2021-04-07T23:54:58.500Z" 670000 4990220</ows:LowerCorner>
+                <ows:UpperCorner>"2021-04-10T00:05:01.500Z" 730000 5015220</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>7500000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>S2_L2A_32631_TCI_60m</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>5.158119124176218 45.0277142282970497608</ows:LowerCorner>
+                <ows:UpperCorner>5.9307166038755738654 45.269926091621116</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32631" dimensions="3">
+                <ows:LowerCorner>"2021-04-07T23:54:58.500Z" 669960 4990200</ows:LowerCorner>
+                <ows:UpperCorner>"2021-04-10T00:05:01.500Z" 729960 5015220</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>1251000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>S2_federation_demo</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>10.958363775419501 47.40830646261630665188</ows:LowerCorner>
+                <ows:UpperCorner>11.07321894540021177056 47.5218091713563</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>47.40830646261630665188 10.958363775419501</ows:LowerCorner>
+                <ows:UpperCorner>47.5218091713563 11.07321894540021177056</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>3613392</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Long</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>Temperature4D</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/OGC/0/Index1D?axis-label=&quot;elev&quot;&amp;3=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="4">
+                <ows:LowerCorner>"2010-01-01T00:00:00.000Z" 0 -90 -180</ows:LowerCorner>
+                <ows:UpperCorner>"2010-12-01T00:00:00.000Z" 400 90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>1174705200</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,elev,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>climate_cloud</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/Index3D" dimensions="3">
+                <ows:LowerCorner>-0.5 -0.5 -0.5</ows:LowerCorner>
+                <ows:UpperCorner>719.5 360.5 60.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>62380800</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>i,j,k</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>climate_earth</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/Index3D" dimensions="3">
+                <ows:LowerCorner>-0.5 -0.5 -0.5</ows:LowerCorner>
+                <ows:UpperCorner>719.5 360.5 60.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>63420480</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>i,j,k</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>land_cover_class__esa_test_6</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-179.9986111111111 -89.9986111111111260617</ows:LowerCorner>
+                <ows:UpperCorner>179.998611111111151022 89.99861111111113</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="3">
+                <ows:LowerCorner>"1998-01-01T00:00:00.000Z" -89.9986111111111260617 -179.9986111111111</ows:LowerCorner>
+                <ows:UpperCorner>"1998-01-01T00:00:00.000Z" 89.99861111111113 179.998611111111151022</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>8397885601</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Time,Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>mean_summer_airtemp</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>111.975 -44.524999999999987</ows:LowerCorner>
+                <ows:UpperCorner>156.27500000000000886 -8.974999999999987</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>-44.524999999999987 111.975</ows:LowerCorner>
+                <ows:UpperCorner>-8.974999999999987 156.27500000000000886</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>629946</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>multiband</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>4.860752385843076 52.4371762592109483533</ows:LowerCorner>
+                <ows:UpperCorner>9.0075919347969410802 55.02379763710658</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/32632" dimensions="2">
+                <ows:LowerCorner>234989.62194009003 5816800.127894577999655</ows:LowerCorner>
+                <ows:UpperCorner>500467.12194009003509 6097439.627894578</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>68779233</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>74482749</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>E,N</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>test_365_days_irregular</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/OGC/0/AnsiDate" dimensions="1">
+                <ows:LowerCorner>"2023-01-01T00:00:00.000Z"</ows:LowerCorner>
+                <ows:UpperCorner>"2023-12-31T00:00:00.000Z"</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>2920</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>world_temp</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>-90 -180</ows:LowerCorner>
+                <ows:UpperCorner>90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>1944</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>world_temp_high_res</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>-180 -90</ows:LowerCorner>
+                <ows:UpperCorner>180 90</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>-90 -180</ows:LowerCorner>
+                <ows:UpperCorner>90 180</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>1215000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Lon</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--AER_DLA_DEM_4326_2000_DMC_20010814_20061226</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98944603164368 21.869855286970942</ows:LowerCorner>
+                <ows:UpperCorner>122.02460188609852 25.386697369911044</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/EPSG/0/4326&amp;2=https://www.opengis.net/def/crs/OGC/0/AnsiDate" dimensions="3">
+                <ows:LowerCorner>21.86985528697094303132 119.98944603164368 "2001-08-14T00:00:00.000Z"</ows:LowerCorner>
+                <ows:UpperCorner>25.386697369911044 122.02460188609852358668 "2001-08-14T00:00:00.000Z"</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>845064396</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>1126817928</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Long,ansi</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--CLMS_Forests_Forest_Type_FADSL_20m_4326</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>9.300227969 48.649807638</ows:LowerCorner>
+                <ows:UpperCorner>12.00017022 50.649718176</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>48.64980763799999830104 9.300227969</ows:LowerCorner>
+                <ows:UpperCorner>50.649718176 12.0001702199999998016</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>104776896</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>139674402</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Long</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--DEMg_taiwan_20m_20230209_g14_m4_shad_color</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.016566054283 21.893797706174468</ows:LowerCorner>
+                <ows:UpperCorner>122.00973138896278 25.301473410921194</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2023-02-09T00:00:00.000Z" 150970 2422130</ows:LowerCorner>
+                <ows:UpperCorner>"2023-02-09T00:00:00.000Z" 351670 2799170</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>756719280</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>1008996316</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--DEMg_taiwan_20m_20230209_g14_m4_shad_gray</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.016566054283 21.893797706174468</ows:LowerCorner>
+                <ows:UpperCorner>122.00973138896278 25.301473410921194</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2023-02-09T00:00:00.000Z" 150970 2422130</ows:LowerCorner>
+                <ows:UpperCorner>"2023-02-09T00:00:00.000Z" 351670 2799170</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>756719280</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>1008996316</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--DEMg_taiwan_20m_20230209_g14_m8_shad_color</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.016566054283 21.893797706174468</ows:LowerCorner>
+                <ows:UpperCorner>122.00973138896278 25.301473410921194</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2023-02-09T00:00:00.000Z" 150970 2422130</ows:LowerCorner>
+                <ows:UpperCorner>"2023-02-09T00:00:00.000Z" 351670 2799170</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>756719280</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>1008996316</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--DEMg_taiwan_20m_20230209_g14_m8_shad_gray</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.016566054283 21.893797706174468</ows:LowerCorner>
+                <ows:UpperCorner>122.00973138896278 25.301473410921194</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2023-02-09T00:00:00.000Z" 150970 2422130</ows:LowerCorner>
+                <ows:UpperCorner>"2023-02-09T00:00:00.000Z" 351670 2799170</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>756719280</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>1008996316</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--Flooding_KH</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.14149942072525 22.474044951861682</ows:LowerCorner>
+                <ows:UpperCorner>120.47026654823613 23.04405507226645</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2023-10-12T00:00:00.000Z" 162018.5 2486300.5</ows:LowerCorner>
+                <ows:UpperCorner>"2023-10-12T00:00:00.000Z" 195498.5 2549260.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>5269752</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>7002464</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--Germany_DTM</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>RectifiedGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>4.999583333333334 46.99958333333337</ows:LowerCorner>
+                <ows:UpperCorner>16.000416666666624 56.000416666666666</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs/EPSG/0/4326" dimensions="2">
+                <ows:LowerCorner>46.99958333333336867 4.999583333333334</ows:LowerCorner>
+                <ows:UpperCorner>56.000416666666666 16.00041666666662333</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>285168002</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>380160948</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Long</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--LANDUSE_50Q_20200101_20210101</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>112.87859022917927 15.255402739141891</ows:LowerCorner>
+                <ows:UpperCorner>121.03805188558994 24.448203887348928</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32650" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 81847.4694177463 1690310.98450214</ows:LowerCorner>
+                <ows:UpperCorner>"2021-01-01T00:00:00.000Z" 909677.4694177463 2703850.98450214</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>8390388182</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>11164650670</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--LANDUSE_51Q_20200101_20210101</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.18551548661193 15.234301774765603</ows:LowerCorner>
+                <ows:UpperCorner>124.36723649965947 24.435788773672552</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32651" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 113006.16698166548 1687435.9325054907</ows:LowerCorner>
+                <ows:UpperCorner>"2021-01-01T00:00:00.000Z" 638606.16698166548 2702475.9325054907</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>5335050240</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>7101083600</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--LANDUSE_51R_20200101_20210101</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>118.59837637766657 23.30100723517216</ows:LowerCorner>
+                <ows:UpperCorner>127.36296462528921 32.5728755722755</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/32651" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 86322.59866415017 2582617.6740333773</ows:LowerCorner>
+                <ows:UpperCorner>"2021-01-01T00:00:00.000Z" 910032.59866415017 3603937.6740333773</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>8412714972</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>11182702116</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,E,N</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--LIDAR_DLA_DEM_4326_2000_Leica_20110101_20161101</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98944603164368 21.869855286970942</ows:LowerCorner>
+                <ows:UpperCorner>122.02460188609852 25.386697369911044</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/EPSG/0/4326&amp;2=https://www.opengis.net/def/crs/OGC/0/AnsiDate" dimensions="3">
+                <ows:LowerCorner>21.86985528697094303132 119.98944603164368 "2001-08-14T00:00:00.000Z"</ows:LowerCorner>
+                <ows:UpperCorner>25.386697369911044 122.02460188609852358668 "2001-08-14T00:00:00.000Z"</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>845064396</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>1126817928</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>Lat,Long,ansi</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--lugang</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.43369938498842 24.044753505211613</ows:LowerCorner>
+                <ows:UpperCorner>120.44581388582328 24.05635714792367</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2023-11-09T00:00:00.000Z" 192408.1382 2660095.4709999998142308999999789025</ows:LowerCorner>
+                <ows:UpperCorner>"2023-11-09T00:00:00.000Z" 193635.1382 2661375.671</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>475427808</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>630068019</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--sample</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.4454985456935 24.054549945670686</ows:LowerCorner>
+                <ows:UpperCorner>120.4457717063944 24.05635714792367</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2018-11-23T00:00:00.000Z" 193608.1382 2661175.6709999999709</ows:LowerCorner>
+                <ows:UpperCorner>"2018-11-23T00:00:00.000Z" 193635.1382 2661375.671</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>1620000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>2025000</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--tainan_inundation_depth</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>120.03370827265717 22.900487948383297</ows:LowerCorner>
+                <ows:UpperCorner>120.60214579494068 23.413550841259465</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2020-01-01T00:00:00.000Z" 151242.5 2533574.5</ows:LowerCorner>
+                <ows:UpperCorner>"2020-01-02T00:00:00.000Z" 209202.5 2590134.5</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>409777200</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>544435400</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,x,y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--taiwan_air_quality_monitoring_data</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98127007834208 21.89257145575202</ows:LowerCorner>
+                <ows:UpperCorner>122.01108121912524 25.428178576540464</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 147522.21879115 2422004.7731021</ows:LowerCorner>
+                <ows:UpperCorner>"2021-10-01T00:00:00.000Z" 351722.21879115004084 2813204.7731021</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>3121212672</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>4144310208</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--taiwan_air_quality_monitoring_data_benzene</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98233263748118 21.892679133203362</ows:LowerCorner>
+                <ows:UpperCorner>122.0094749948674 25.30133604582782</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 147522.21879115 2422004.7731021</ows:LowerCorner>
+                <ows:UpperCorner>"2021-10-01T00:00:00.000Z" 351672.21879115004083 2799154.7731021</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>505350828</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>667109276</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--taiwan_air_quality_monitoring_data_co</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98233263748118 21.892679133203362</ows:LowerCorner>
+                <ows:UpperCorner>122.0094749948674 25.30133604582782</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 147522.21879115 2422004.7731021</ows:LowerCorner>
+                <ows:UpperCorner>"2021-10-01T00:00:00.000Z" 351672.21879115004083 2799154.7731021</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>505350828</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>667109276</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--taiwan_air_quality_monitoring_data_no2</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98127007834208 21.89259609991683</ows:LowerCorner>
+                <ows:UpperCorner>122.01060700422876 25.42817856997784</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 147522.21879115 2422004.77310209992176</ows:LowerCorner>
+                <ows:UpperCorner>"2021-10-01T00:00:00.000Z" 351672.21879115004083 2813204.7731021</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>523707264</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>691469472</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--taiwan_air_quality_monitoring_data_o3</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98233263748118 21.892679133203362</ows:LowerCorner>
+                <ows:UpperCorner>122.0094749948674 25.30133604582782</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 147522.21879115 2422004.7731021</ows:LowerCorner>
+                <ows:UpperCorner>"2021-10-01T00:00:00.000Z" 351672.21879115004083 2799154.7731021</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>505350828</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>667109276</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--taiwan_air_quality_monitoring_data_pm2dot5</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98233263748118 21.892654582920578</ows:LowerCorner>
+                <ows:UpperCorner>122.00995010707206 25.301336052353168</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 147522.21879115 2422004.7731021</ows:LowerCorner>
+                <ows:UpperCorner>"2021-10-01T00:00:00.000Z" 351722.21879115004084 2799154.7731021</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>505471516</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>667229964</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+        <wcs20:CoverageSummary>
+            <wcs20:CoverageId>nchc.earthserver.xyz--7000--taiwan_air_quality_monitoring_data_so2</wcs20:CoverageId>
+            <wcs20:CoverageSubtype>ReferenceableGridCoverage</wcs20:CoverageSubtype>
+            <ows:WGS84BoundingBox>
+                <ows:LowerCorner>119.98127007834208 21.89259609991683</ows:LowerCorner>
+                <ows:UpperCorner>122.01060700422876 25.42817856997784</ows:UpperCorner>
+            </ows:WGS84BoundingBox>
+            <ows:BoundingBox crs="https://www.opengis.net/def/crs-compound?1=https://www.opengis.net/def/crs/OGC/0/AnsiDate&amp;2=https://www.opengis.net/def/crs/EPSG/0/3826" dimensions="3">
+                <ows:LowerCorner>"2021-01-01T00:00:00.000Z" 147522.21879115 2422004.77310209992176</ows:LowerCorner>
+                <ows:UpperCorner>"2021-10-01T00:00:00.000Z" 351672.21879115004083 2813204.7731021</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:AdditionalParameters>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytes</ows:Name>
+                    <ows:Value>523707264</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>sizeInBytesWithPyramidLevels</ows:Name>
+                    <ows:Value>691469472</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>axisList</ows:Name>
+                    <ows:Value>ansi,X,Y</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>hostname</ows:Name>
+                    <ows:Value>nchc.earthserver.xyz</ows:Value>
+                </ows:AdditionalParameter>
+                <ows:AdditionalParameter>
+                    <ows:Name>endpoint</ows:Name>
+                    <ows:Value>https://nchc.earthserver.xyz/rasdaman/ows</ows:Value>
+                </ows:AdditionalParameter>
+            </ows:AdditionalParameters>
+        </wcs20:CoverageSummary>
+    </wcs20:Contents>
+</wcs20:Capabilities>

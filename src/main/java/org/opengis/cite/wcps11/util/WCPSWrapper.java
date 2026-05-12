@@ -4,9 +4,9 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.management.RuntimeErrorException;
 import javax.xml.transform.Source;
 
-// import org.w3c.dom.Document;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -21,13 +21,20 @@ public class WCPSWrapper {
     
     private String forClause;
 
-    public WCPSWrapper(URI serviceEndpoint) {
+    public WCPSWrapper(URI serviceEndpoint, Client client) {
         this.serviceEndpoint = serviceEndpoint;
-        client = ClientUtils.buildClient();
-        forClause = "for __cov__ in ( " + discoverCoverage() + " )\n";
+        this.client = client;
     }
 
     public ClientResponse sendQueryKVP(String query) {
+        if (null == forClause) {
+            try {
+                forClause = "for __cov__ in ( " + discoverCoverage() + " )\n";
+            } catch (Exception e) {
+                throw new RuntimeErrorException(new Error("Failed to discover a coverage from the server. Make sure the server is live and has at least one coverage"));
+            }
+            
+        }
         Map<String, String> params = new HashMap<>();
         params.put("service", "WCS");
         params.put("request", "ProcessCoverages");
@@ -42,6 +49,7 @@ public class WCPSWrapper {
         params.put("service", "WCS");
         params.put("request", "GetCapabilities");
         try {
+            // Extract the first coverage ID from the capabilities document.
             ClientResponse response = client.handle(ClientUtils.buildGetRequest(serviceEndpoint, params));
             Source body = ClientUtils.getResponseEntityAsSource(response, null);
             String xpath = "(//*[local-name()='CoverageId'])[1]";

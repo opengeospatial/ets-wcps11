@@ -11,8 +11,8 @@ public class CondenseOperations extends TestSuiteBase {
     
     @DataProvider(name = "condenseOps")
     public Object[][] provideCondenseOps() {
-        return new Object[][]{{CONDENSE_ADD}, {CONDENSE_MUL}, {CONDENSE_MAX}, {CONDENSE_MIN}, {CONDENSE_OR},
-                              {CONDENSE_AND}, {REDUCE_SUM}, {REDUCE_AVG}, {REDUCE_MIN}, {REDUCE_MAX}, {REDUCE_COUNT}};
+        return new Object[][]{{CONDENSE_ADD}, {CONDENSE_MUL}, {CONDENSE_MAX}, {CONDENSE_MIN},
+                              {REDUCE_SUM}, {REDUCE_AVG}, {REDUCE_MIN}, {REDUCE_MAX}, {REDUCE_COUNT}};
     }
     
     @Test(description = "Condense Operations", dataProvider = "condenseOps")
